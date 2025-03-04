@@ -29,8 +29,8 @@ function initChatWidget() {
             chatWidget.classList.remove('hidden');
             if (chatInput) chatInput.focus();
             
-            // If this is the first time opening, show welcome message
-            if (chatMessages.children.length <= 1) {
+            // Only show welcome message if chat is empty
+            if (chatMessages.children.length === 0) {
                 setTimeout(() => {
                     addMessage('assistant', "Hello! I'm your AnySoft assistant. How can I help you today?");
                 }, 500);
@@ -82,11 +82,7 @@ function createChatWidgetHTML() {
                 </button>
             </div>
             <div id="chat-messages" class="h-80 overflow-y-auto p-4 bg-gray-900">
-                <div class="chat-message assistant mb-4">
-                    <div class="bg-gray-800 rounded-lg p-3 max-w-xs">
-                        <p>Hello! I'm your AnySoft assistant. How can I help you today?</p>
-                    </div>
-                </div>
+                <!-- Chat messages will be added here dynamically -->
             </div>
             <div class="p-4 border-t border-gray-700">
                 <form id="chat-form" class="flex gap-2">
@@ -148,6 +144,9 @@ function formatTextWithLinks(text) {
 function showTypingIndicator() {
     const chatMessages = document.getElementById('chat-messages');
     if (!chatMessages) return;
+    
+    // Check if typing indicator already exists
+    if (document.getElementById('typing-indicator')) return;
     
     const typingDiv = document.createElement('div');
     typingDiv.className = 'chat-message assistant mb-4 typing-indicator';
