@@ -1,10 +1,12 @@
 /**
- * AnySoft Lead Capture Chat Widget
- * Updated to send emails to Formspree
+ * AnySoft Chat Widget
+ * Updated conversation flow to collect question first, then email
  */
 
-// Global state to prevent duplicate messages
+// Global state
 let initialMessageSent = false;
+let userQuestion = '';
+let waitingForEmail = false;
 
 document.addEventListener('DOMContentLoaded', function() {
     initChatWidget();
@@ -32,10 +34,10 @@ function initChatWidget() {
             chatWidget.classList.remove('hidden');
             if (chatInput) chatInput.focus();
             
-            // Send initial lead capture message only once
+            // Send initial help offer message only once
             if (!initialMessageSent && chatMessages.children.length === 0) {
                 setTimeout(() => {
-                    addMessage('assistant', "Thanks for your interest in AnySoft! Please share your email so we can follow up with you.");
+                    addMessage('assistant', "Hi there! How can I help you with AnySoft today?");
                     initialMessageSent = true;
                 }, 500);
             }
@@ -60,13 +62,24 @@ function initChatWidget() {
                 // Clear input
                 chatInput.value = '';
                 
-                // Check if message looks like an email
-                if (isEmailLike(message)) {
-                    processEmailSubmission(message);
+                // Process the message based on conversation state
+                if (waitingForEmail) {
+                    if (isEmailLike(message)) {
+                        // User provided an email, submit to Formspree
+                        submitToFormspree(message, userQuestion);
+                    } else {
+                        // Not an email, ask again
+                        setTimeout(() => {
+                            addMessage('assistant', "I need your email address to have someone follow up with you. Please provide a valid email address.");
+                        }, 500);
+                    }
                 } else {
-                    // For non-email messages, prompt for email
+                    // This is the user's first message (question)
+                    userQuestion = message;
+                    waitingForEmail = true;
+                    
                     setTimeout(() => {
-                        addMessage('assistant', "To best assist you, we'd like to follow up directly. Could you please provide your email address?");
+                        addMessage('assistant', "Thank you, I will pass this along to the team. Please provide your email address for follow up.");
                     }, 500);
                 }
                 
@@ -85,10 +98,10 @@ function isEmailLike(text) {
 }
 
 /**
- * Process what appears to be an email submission
+ * Submit data to Formspree
  */
-function processEmailSubmission(email) {
-    // Send email to Formspree
+function submitToFormspree(email, question) {
+    // Send to Formspree
     fetch('https://formspree.io/f/xpwqvggj', {
         method: 'POST',
         headers: {
@@ -96,6 +109,7 @@ function processEmailSubmission(email) {
         },
         body: JSON.stringify({
             email: email,
+            message: question,
             source: 'chat-widget',
             page: window.location.href,
             timestamp: new Date().toISOString()
@@ -103,8 +117,10 @@ function processEmailSubmission(email) {
     })
     .then(response => {
         if (response.ok) {
-            // Thank the user for submitting their email
-            addMessage('assistant', "Thank you for your email! We've added you to our list and will be in touch soon about getting started with AnySoft.");
+            // Thank the user and reset the conversation state
+            addMessage('assistant', "Thank you! We've received your question and email. Someone from our team will get back to you shortly.");
+            userQuestion = '';
+            waitingForEmail = false;
         } else {
             throw new Error('Network response was not ok');
         }
@@ -113,20 +129,25 @@ function processEmailSubmission(email) {
         console.error('Error submitting form:', error);
         
         // Show error message if submission fails
-        addMessage('assistant', "Thanks for your email! We've had a small technical issue, but we'll make sure to follow up with you soon.");
+        addMessage('assistant', "Thanks for your information! We've had a small technical issue, but we'll make sure to follow up with you soon.");
         
         // Fall back to localStorage as backup
         try {
-            let leads = JSON.parse(localStorage.getItem('anysoftLeads')) || [];
-            leads.push({
+            let inquiries = JSON.parse(localStorage.getItem('anysoftInquiries')) || [];
+            inquiries.push({
                 email: email,
+                question: question,
                 timestamp: new Date().toISOString(),
                 source: 'chat-widget-fallback'
             });
-            localStorage.setItem('anysoftLeads', JSON.stringify(leads));
+            localStorage.setItem('anysoftInquiries', JSON.stringify(inquiries));
         } catch (e) {
             console.error('Fallback storage failed:', e);
         }
+        
+        // Reset conversation state
+        userQuestion = '';
+        waitingForEmail = false;
     });
 }
 
@@ -150,7 +171,7 @@ function createChatWidgetHTML() {
             </div>
             <div class="p-4 border-t border-gray-700">
                 <form id="chat-form" class="flex gap-2">
-                    <input type="text" id="chat-input" placeholder="Enter your email or message..." class="flex-1 px-4 py-2 rounded-lg bg-gray-800 border border-gray-700">
+                    <input type="text" id="chat-input" placeholder="Type your message..." class="flex-1 px-4 py-2 rounded-lg bg-gray-800 border border-gray-700">
                     <button type="submit" class="bg-green-500 text-black p-2 rounded-lg">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -203,6 +224,8 @@ function scrollChatToBottom() {
 // Clear any existing state when the page loads
 window.addEventListener('load', function() {
     initialMessageSent = false;
+    userQuestion = '';
+    waitingForEmail = false;
 });
 
 // Initialize if the document is already loaded
