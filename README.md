@@ -1,6 +1,6 @@
 # AnySoft Website
 
-The official website for AnySoft - an AI-powered software development platform that enables anyone to build anything.
+The official website for AnySoft - an AI-powered software development platform that enables anyone to build software.
 
 ## About
 
