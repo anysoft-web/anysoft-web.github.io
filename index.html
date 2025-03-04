@@ -3,91 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnySoft - Anyone Can Build Anything</title>
+    <title>AnySoft - Build Anything with AI</title>
     <link rel="stylesheet" href="css/styles.css">
     <script defer src="js/script.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <header>
-        <h1>AnySoft</h1>
+<body class="bg-black text-white font-sans">
+
+    <header class="fixed top-0 left-0 w-full flex justify-between items-center px-8 py-6 bg-black bg-opacity-90 backdrop-blur-md shadow-lg">
         <nav>
-            <ul>
-                <li><a href="#why">Why AnySoft?</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#usecases">Use Cases</a></li>
-                <li><a href="#values">Core Values</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><button id="signup-btn">Get Started for Free</button></li>
+            <ul class="flex space-x-6 text-lg">
+                <li><a href="#hero" class="hover:text-gray-400 transition">Why AnySoft?</a></li>
+                <li><a href="#pricing" class="hover:text-gray-400 transition">Pricing</a></li>
+                <li><a href="#usecases" class="hover:text-gray-400 transition">Use Cases</a></li>
+                <li><a href="#values" class="hover:text-gray-400 transition">Core Values</a></li>
+                <li><a href="#contact" class="hover:text-gray-400 transition">Contact</a></li>
             </ul>
         </nav>
+        <a href="#contact" class="bg-green-500 px-6 py-3 rounded-full font-semibold text-black hover:bg-green-600 transition">
+            Get Started for Free
+        </a>
     </header>
 
-    <section id="hero">
-        <h2>Anyone Can Build Anything</h2>
-        <p>Software development is no longer limited to a select few.</p>
-        <button id="signup-hero">Get Started for Free</button>
+    <section id="hero" class="relative flex flex-col items-center justify-center h-screen text-center bg-black text-white">
+        <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('images/anysoft-logo.jpeg');"></div>
+        <h2 class="text-6xl font-extrabold relative">Anyone Can Build Anything</h2>
+        <p class="mt-6 text-xl text-gray-300 max-w-2xl relative">
+            Software development is no longer limited to a select few. AI to build user-loved, enterprise-ready apps.
+        </p>
+        <a href="#contact" class="mt-8 bg-green-500 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-green-600 transition relative">
+            Get Started for Free
+        </a>
     </section>
 
-    <section id="why">
-        <h3>Why AnySoft?</h3>
-        <p>✅ AI builds, tests, and deploys bug-free applications in clicks.</p>
-        <p>✅ Designed with users in mind, paving the way for breakthrough innovation.</p>
+    <section id="pricing" class="py-20 bg-black text-center">
+        <h3 class="text-4xl font-bold">Pricing</h3>
+        <div class="max-w-5xl mx-auto mt-10 grid md:grid-cols-3 gap-8">
+            <div class="p-8 rounded-xl bg-gray-800 shadow-lg flex flex-col items-center text-center">
+                <h4 class="text-2xl font-bold">Starter</h4>
+                <p class="text-3xl font-semibold mt-2">$0/month</p>
+                <div class="mt-4 text-lg text-gray-400 flex flex-col space-y-2">
+                    <span>✅ 30 mins/day AI</span>
+                    <span>✅ 50 GB bandwidth</span>
+                    <span>✅ anysoft.app branding</span>
+                </div>
+                <a href="#contact" class="mt-6 bg-green-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition">
+                    Get Started for Free
+                </a>
+            </div>
+            <div class="p-8 rounded-xl bg-gray-700 shadow-lg border border-green-500 flex flex-col items-center text-center">
+                <h4 class="text-2xl font-bold">Professional</h4>
+                <p class="text-3xl font-semibold mt-2">$50/month</p>
+                <div class="mt-4 text-lg text-gray-400 flex flex-col space-y-2">
+                    <span>✅ 2 hrs/day AI</span>
+                    <span>✅ 200 GB bandwidth</span>
+                    <span>✅ Custom domain</span>
+                </div>
+                <a href="#contact" class="mt-6 bg-green-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition">
+                    Get Started for Free
+                </a>
+            </div>
+            <div class="p-8 rounded-xl bg-gray-800 shadow-lg flex flex-col items-center text-center">
+                <h4 class="text-2xl font-bold">Enterprise</h4>
+                <p class="text-3xl font-semibold mt-2">$100/month</p>
+                <div class="mt-4 text-lg text-gray-400 flex flex-col space-y-2">
+                    <span>✅ 4 hrs/day AI</span>
+                    <span>✅ 350 GB bandwidth</span>
+                    <span>✅ Advanced security</span>
+                </div>
+                <a href="#contact" class="mt-6 bg-orange-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-orange-600 transition">
+                    Contact Sales
+                </a>
+            </div>
+        </div>
     </section>
 
-    <section id="pricing">
-        <h3>Pricing</h3>
-        <table>
-            <tr>
-                <th>Plan</th>
-                <th>Price</th>
-                <th>Features</th>
-                <th>Sign Up</th>
-            </tr>
-            <tr>
-                <td>Starter</td>
-                <td>$0/month</td>
-                <td>30 mins/day AI, 50 GB bandwidth, anysoft.app branding</td>
-                <td><button class="signup-btn">Get Started for Free</button></td>
-            </tr>
-            <tr>
-                <td>Professional</td>
-                <td>$50/month</td>
-                <td>2 hrs/day AI, 200 GB bandwidth, custom branding</td>
-                <td><button class="signup-btn">Get Started for Free</button></td>
-            </tr>
-            <tr>
-                <td>Enterprise</td>
-                <td>$100/month</td>
-                <td>4 hrs/day AI, 350 GB bandwidth, advanced security</td>
-                <td><button class="signup-btn">Contact Sales</button></td>
-            </tr>
-        </table>
+    <section id="usecases" class="py-20 text-center bg-gray-900">
+        <h3 class="text-4xl font-bold">Use Cases</h3>
+        <div class="max-w-5xl mx-auto mt-10 grid md:grid-cols-2 gap-8">
+            <div class="p-6 bg-gray-800 rounded-lg shadow-md text-left">
+                <h4 class="text-2xl font-semibold">💡 Entrepreneur</h4>
+                <p class="mt-2 text-gray-300">Build the first 1-person Unicorn. AI-driven automation lets you scale without a team.</p>
+            </div>
+            <div class="p-6 bg-gray-800 rounded-lg shadow-md text-left">
+                <h4 class="text-2xl font-semibold">🚀 Product Manager</h4>
+                <p class="mt-2 text-gray-300">Test an MVP faster than writing a PRD. Validate ideas in real-time with AI-built apps.</p>
+            </div>
+            <div class="p-6 bg-gray-800 rounded-lg shadow-md text-left">
+                <h4 class="text-2xl font-semibold">📊 IT / HR / Finance</h4>
+                <p class="mt-2 text-gray-300">Make a ticketing system users love with seamless automation and enterprise-grade AI.</p>
+            </div>
+            <div class="p-6 bg-gray-800 rounded-lg shadow-md text-left">
+                <h4 class="text-2xl font-semibold">👥 HR</h4>
+                <p class="mt-2 text-gray-300">Personalize an actionable org chart with AI-driven team insights and automation.</p>
+            </div>
+            <div class="p-6 bg-gray-800 rounded-lg shadow-md text-left">
+                <h4 class="text-2xl font-semibold">💰 Finance</h4>
+                <p class="mt-2 text-gray-300">Simplify contractor management with automated approvals and real-time tracking.</p>
+            </div>
+        </div>
     </section>
 
-    <section id="usecases">
-        <h3>Use Cases</h3>
-        <p>Entrepreneur: Build the first 1-person Unicorn.</p>
-        <p>Product Manager: Test an MVP faster than a PRD.</p>
-        <p>IT/HR/Finance: Make a ticketing system users love.</p>
-        <p>HR: Personalize an actionable org chart.</p>
-        <p>Finance: Simplify contractor management.</p>
-    </section>
-
-    <section id="values">
-        <h3>Core Values</h3>
-        <p>✅ One Team – Customers are family.</p>
-        <p>✅ Vision – Every release is the most innovative.</p>
-        <p>✅ Velocity – Build, Measure, Iterate.</p>
-    </section>
-
-    <section id="contact">
-        <h3>Sign Up for Early Access</h3>
-        <form id="signup-form">
-            <input type="email" id="email" placeholder="Enter your email" required>
-            <button type="submit">Sign Up</button>
+    <section id="contact" class="py-32 bg-black text-center">
+        <h3 class="text-4xl font-bold">Sign Up for Early Access</h3>
+        <form id="signup-form" class="mt-6">
+            <input type="email" id="email" placeholder="Enter your email" required class="px-6 py-3 border border-gray-600 rounded-full bg-gray-800 text-white w-72 text-lg">
+            <button type="submit" class="ml-4 bg-green-500 text-black px-8 py-3 rounded-full font-semibold text-lg hover:bg-green-600 transition">
+                Sign Up
+            </button>
         </form>
     </section>
 
+    <section id="values" class="py-20 text-center bg-gray-900">
+        <h3 class="text-4xl font-bold">Core Values</h3>
+        <p class="mt-6 text-lg text-gray-400">✅ One Team – Customers are family.</p>
+        <p class="text-lg text-gray-400">✅ Vision – Every release is the most innovative.</p>
+        <p class="text-lg text-gray-400">✅ Velocity – Build, Measure, Iterate.</p>
+    </section>
+
+    <footer class="py-10 bg-gray-900 text-center text-gray-400 text-lg">
+        Copyright © 2025 AnySoft: Anyone Can Build Software - All Rights Reserved.
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/lobe-chat"></script>
+
 </body>
 </html>
