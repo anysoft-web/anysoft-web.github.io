@@ -3,129 +3,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnySoft - Build Anything with AI</title>
+    <title>AnySoft - Build Software with AI</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/anysoft-logo.png">
+    <link rel="apple-touch-icon" href="images/anysoft-logo.png">
+    
+    <!-- Meta tags -->
+    <meta name="description" content="AnySoft - AI software development platform that empowers anyone to build software without coding experience.">
+    <meta name="keywords" content="AI, software development, no-code, low-code, application building">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="AnySoft - Build Software with AI">
+    <meta property="og:description" content="Software development is no longer limited to a select few. With AI, anyone can build software.">
+    <meta property="og:image" content="https://anysoft.app/images/anysoft-logo.png">
+    <meta property="og:url" content="https://anysoft.app">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/styles.css">
-    <script defer src="js/script.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Scripts -->
+    <script defer src="js/script.js"></script>
 </head>
 <body class="bg-black text-white font-sans">
-
-    <header class="fixed top-0 left-0 w-full flex justify-between items-center px-8 py-6 bg-black bg-opacity-90 backdrop-blur-md shadow-lg">
-        <nav>
-            <ul class="flex space-x-6 text-lg">
-                <li><a href="#hero" class="hover:text-gray-400 transition">Why AnySoft?</a></li>
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 w-full flex justify-between items-center px-4 md:px-8 py-4 md:py-6 bg-black bg-opacity-90 backdrop-blur-md shadow-lg z-50">
+        <div class="flex items-center space-x-3">
+            <img src="images/anysoft-logo.png" alt="AnySoft Logo" class="h-8 md:h-10">
+            <span class="text-xl md:text-2xl font-bold">AnySoft</span>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <nav class="desktop-menu">
+            <ul class="flex space-x-4 md:space-x-6 text-base md:text-lg">
+                <li><a href="#why" class="hover:text-gray-400 transition">Why AnySoft?</a></li>
                 <li><a href="#pricing" class="hover:text-gray-400 transition">Pricing</a></li>
                 <li><a href="#usecases" class="hover:text-gray-400 transition">Use Cases</a></li>
                 <li><a href="#values" class="hover:text-gray-400 transition">Core Values</a></li>
                 <li><a href="#contact" class="hover:text-gray-400 transition">Contact</a></li>
             </ul>
         </nav>
-        <a href="#contact" class="bg-green-500 px-6 py-3 rounded-full font-semibold text-black hover:bg-green-600 transition">
+        
+        <!-- Mobile Menu Button -->
+        <div class="mobile-menu">
+            <button id="mobile-menu-button" class="text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu-dropdown" class="hidden absolute top-16 right-0 bg-gray-900 w-full">
+                <ul class="flex flex-col p-4">
+                    <li class="py-2"><a href="#why" class="block hover:text-gray-400 transition">Why AnySoft?</a></li>
+                    <li class="py-2"><a href="#pricing" class="block hover:text-gray-400 transition">Pricing</a></li>
+                    <li class="py-2"><a href="#usecases" class="block hover:text-gray-400 transition">Use Cases</a></li>
+                    <li class="py-2"><a href="#values" class="block hover:text-gray-400 transition">Core Values</a></li>
+                    <li class="py-2"><a href="#contact" class="block hover:text-gray-400 transition">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <a href="#contact" class="hidden md:block bg-green-500 px-6 py-3 rounded-full font-semibold text-black hover:bg-green-600 transition">
             Get Started for Free
         </a>
     </header>
 
-    <section id="hero" class="relative flex flex-col items-center justify-center h-screen text-center bg-black text-white">
-        <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('images/anysoft-logo.jpeg');"></div>
-        <h2 class="text-6xl font-extrabold relative">Anyone Can Build Anything</h2>
-        <p class="mt-6 text-xl text-gray-300 max-w-2xl relative">
-            Software development is no longer limited to a select few. AI to build user-loved, enterprise-ready apps.
-        </p>
-        <a href="#contact" class="mt-8 bg-green-500 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-green-600 transition relative">
+    <!-- Hero Section -->
+    <section id="hero" class="flex flex-col items-center justify-center min-h-screen text-center bg-gradient-to-br from-gray-900 to-black text-white px-4 pt-20 pb-10">
+        <h1 class="text-4xl md:text-6xl font-extrabold">Anyone Can Build Software</h1>
+        <p class="mt-6 text-lg md:text-xl text-gray-300 max-w-2xl">Software development is no longer limited to a select few. With AI, you can create and deploy powerful applications effortlessly.</p>
+        <a href="#contact" class="mt-8 bg-green-500 text-black px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold text-lg hover:bg-green-600 transition">
             Get Started for Free
         </a>
     </section>
 
-    <section id="pricing" class="py-20 bg-black text-center">
-        <h3 class="text-4xl font-bold">Pricing</h3>
+    <!-- Why AnySoft Section -->
+    <section id="why" class="py-16 md:py-20 bg-gray-900 text-center px-4">
+        <h2 class="text-3xl md:text-4xl font-bold">Why AnySoft?</h2>
         <div class="max-w-5xl mx-auto mt-10 grid md:grid-cols-3 gap-8">
-            <div class="p-8 rounded-xl bg-gray-800 shadow-lg flex flex-col items-center text-center">
-                <h4 class="text-2xl font-bold">Starter</h4>
+            <div class="p-6 rounded-xl bg-gray-800 shadow-lg">
+                <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-green-500">
+                    <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Anyone, Anything</h3>
+                <p class="text-gray-400">Create robust software effortlessly, no coding experience required.</p>
+            </div>
+            <div class="p-6 rounded-xl bg-gray-800 shadow-lg">
+                <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-green-500">
+                    <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Secure & Automatic</h3>
+                <p class="text-gray-400">AI builds, tests, and deploys bug-free applications in just a few clicks.</p>
+            </div>
+            <div class="p-6 rounded-xl bg-gray-800 shadow-lg">
+                <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-green-500">
+                    <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Guided Platform</h3>
+                <p class="text-gray-400">Designed with users in mind, paving the way for breakthrough innovation.</p>
+            </div>
+        </div>
+        <a href="#contact" class="inline-block mt-10 bg-green-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition">
+            Get Started for Free
+        </a>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 md:py-20 bg-black text-center px-4">
+        <h2 class="text-3xl md:text-4xl font-bold">Pricing</h2>
+        <div class="max-w-5xl mx-auto mt-10 grid md:grid-cols-3 gap-8">
+            <!-- Starter Plan -->
+            <div class="p-6 md:p-8 rounded-xl bg-gray-800 shadow-lg flex flex-col h-full">
+                <h3 class="text-2xl font-bold">Starter</h3>
                 <p class="text-3xl font-semibold mt-2">$0/month</p>
-                <div class="mt-4 text-lg text-gray-400 flex flex-col space-y-2">
-                    <span>✅ 30 mins/day AI</span>
+                <div class="mt-4 text-base md:text-lg text-gray-400 flex flex-col space-y-2 flex-grow">
+                    <span>✅ Deploy with anysoft.app branding</span>
+                    <span>✅ 30 mins/day of AI usage</span>
                     <span>✅ 50 GB bandwidth</span>
-                    <span>✅ anysoft.app branding</span>
+                    <span>✅ Public marketplace listing only</span>
                 </div>
                 <a href="#contact" class="mt-6 bg-green-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition">
                     Get Started for Free
                 </a>
             </div>
-            <div class="p-8 rounded-xl bg-gray-700 shadow-lg border border-green-500 flex flex-col items-center text-center">
-                <h4 class="text-2xl font-bold">Professional</h4>
+            
+            <!-- Professional Plan -->
+            <div class="p-6 md:p-8 rounded-xl bg-gray-700 shadow-lg border border-green-500 flex flex-col h-full relative">
+                <div class="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4">
+                    <span class="bg-green-500 text-black text-xs px-2 py-1 rounded-full font-bold">POPULAR</span>
+                </div>
+                <h3 class="text-2xl font-bold">Professional</h3>
                 <p class="text-3xl font-semibold mt-2">$50/month</p>
-                <div class="mt-4 text-lg text-gray-400 flex flex-col space-y-2">
-                    <span>✅ 2 hrs/day AI</span>
+                <div class="mt-4 text-base md:text-lg text-gray-400 flex flex-col space-y-2 flex-grow">
+                    <span>✅ Custom branded deployment</span>
+                    <span>✅ Deploy to any platform</span>
+                    <span>✅ Team access & collaboration</span>
+                    <span>✅ Public & private marketplace listing</span>
+                    <span>✅ 2 hrs/day of AI usage</span>
                     <span>✅ 200 GB bandwidth</span>
-                    <span>✅ Custom domain</span>
                 </div>
                 <a href="#contact" class="mt-6 bg-green-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition">
                     Get Started for Free
                 </a>
             </div>
-            <div class="p-8 rounded-xl bg-gray-800 shadow-lg flex flex-col items-center text-center">
-                <h4 class="text-2xl font-bold">Enterprise</h4>
+            
+            <!-- Enterprise Plan -->
+            <div class="p-6 md:p-8 rounded-xl bg-gray-800 shadow-lg flex flex-col h-full">
+                <h3 class="text-2xl font-bold">Enterprise</h3>
                 <p class="text-3xl font-semibold mt-2">$100/month</p>
-                <div class="mt-4 text-lg text-gray-400 flex flex-col space-y-2">
-                    <span>✅ 4 hrs/day AI</span>
+                <div class="mt-4 text-base md:text-lg text-gray-400 flex flex-col space-y-2 flex-grow">
+                    <span>✅ Advanced security & compliance</span>
+                    <span>✅ Custom integrations support</span>
+                    <span>✅ Dedicated account management</span>
+                    <span>✅ Enterprise-grade SLAs</span>
+                    <span>✅ 4 hrs/day of AI usage</span>
                     <span>✅ 350 GB bandwidth</span>
-                    <span>✅ Advanced security</span>
                 </div>
                 <a href="#contact" class="mt-6 bg-orange-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-orange-600 transition">
                     Contact Sales
                 </a>
             </div>
         </div>
-    </section>
-
-    <section id="usecases" class="py-20 text-center bg-gray-900">
-        <h3 class="text-4xl font-bold">Use Cases</h3>
-        <div class="max-w-5xl mx-auto mt-10 grid md:grid-cols-2 gap-8">
-            <div class="p-6 bg-gray-800 rounded-lg shadow-md text-left">
-                <h4 class="text-2xl font-semibold">💡 Entrepreneur</h4>
-                <p class="mt-2 text-gray-300">Build the first 1-person Unicorn. AI-driven automation lets you scale without a team.</p>
-            </div>
-            <div class="p-6 bg-gray-800 rounded-lg shadow-md text-left">
-                <h4 class="text-2xl font-semibold">🚀 Product Manager</h4>
-                <p class="mt-2 text-gray-300">Test an MVP faster than writing a PRD. Validate ideas in real-time with AI-built apps.</p>
-            </div>
-            <div class="p-6 bg-gray-800 rounded-lg shadow-md text-left">
-                <h4 class="text-2xl font-semibold">📊 IT / HR / Finance</h4>
-                <p class="mt-2 text-gray-300">Make a ticketing system users love with seamless automation and enterprise-grade AI.</p>
-            </div>
-            <div class="p-6 bg-gray-800 rounded-lg shadow-md text-left">
-                <h4 class="text-2xl font-semibold">👥 HR</h4>
-                <p class="mt-2 text-gray-300">Personalize an actionable org chart with AI-driven team insights and automation.</p>
-            </div>
-            <div class="p-6 bg-gray-800 rounded-lg shadow-md text-left">
-                <h4 class="text-2xl font-semibold">💰 Finance</h4>
-                <p class="mt-2 text-gray-300">Simplify contractor management with automated approvals and real-time tracking.</p>
+        
+        <!-- Add-On Credits -->
+        <div class="max-w-3xl mx-auto mt-12 p-6 md:p-8 rounded-xl bg-gray-800 shadow-lg border border-green-500">
+            <h3 class="text-2xl font-bold">Add-On Credits</h3>
+            <p class="text-xl font-semibold mt-2">$20/month per block</p>
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-400">
+                <div>✅ +1 hour/day of AI usage</div>
+                <div>✅ +50 GB of bandwidth</div>
+                <div>✅ Available on any edition</div>
+                <div>✅ Simple to add—no limits!</div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-32 bg-black text-center">
-        <h3 class="text-4xl font-bold">Sign Up for Early Access</h3>
-        <form id="signup-form" class="mt-6">
-            <input type="email" id="email" placeholder="Enter your email" required class="px-6 py-3 border border-gray-600 rounded-full bg-gray-800 text-white w-72 text-lg">
-            <button type="submit" class="ml-4 bg-green-500 text-black px-8 py-3 rounded-full font-semibold text-lg hover:bg-green-600 transition">
-                Sign Up
-            </button>
+    <!-- Use Cases Section -->
+    <section id="usecases" class="py-16 md:py-20 bg-gray-900 text-center px-4">
+        <h2 class="text-3xl md:text-4xl font-bold">Use Cases</h2>
+        <div class="max-w-6xl mx-auto mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Entrepreneur Use Case -->
+            <div class="p-6 rounded-xl bg-gray-800 shadow-lg">
+                <h3 class="text-2xl font-bold mb-3">Entrepreneur</h3>
+                <p class="text-gray-400 mb-4">Build the first 1-person Unicorn. Create and iterate on your MVP faster than ever before, without hiring a dev team.</p>
+                <div class="h-40 bg-gray-700 rounded-lg mb-4 flex items-center justify-center">
+                    <svg class="w-16 h-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <a href="#contact" class="inline-block mt-2 bg-green-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition">
+                    Get Started for Free
+                </a>
+            </div>
+            
+            <!-- Product Manager Use Case -->
+            <div class="p-6 rounded-xl bg-gray-800 shadow-lg">
+                <h3 class="text-2xl font-bold mb-3">Product Manager</h3>
+                <p class="text-gray-400 mb-4">Test an MVP faster than a PRD. Validate ideas with real software before committing resources to full development.</p>
+                <div class="h-40 bg-gray-700 rounded-lg mb-4 flex items-center justify-center">
+                    <svg class="w-16 h-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                    </svg>
+                </div>
+                <a href="#contact" class="inline-block mt-2 bg-green-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition">
+                    Get Started for Free
+                </a>
+            </div>
+            
+            <!-- IT/HR/Finance Use Case -->
+            <div class="p-6 rounded-xl bg-gray-800 shadow-lg">
+                <h3 class="text-2xl font-bold mb-3">IT / HR / Finance</h3>
+                <p class="text-gray-400 mb-4">Make a ticketing system users love. Create custom internal tools that perfectly match your team's needs and workflows.</p>
+                <div class="h-40 bg-gray-700 rounded-lg mb-4 flex items-center justify-center">
+                    <svg class="w-16 h-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                    </svg>
+                </div>
+                <a href="#contact" class="inline-block mt-2 bg-green-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition">
+                    Get Started for Free
+                </a>
+            </div>
+            
+            <!-- HR Use Case -->
+            <div class="p-6 rounded-xl bg-gray-800 shadow-lg">
+                <h3 class="text-2xl font-bold mb-3">HR</h3>
+                <p class="text-gray-400 mb-4">Personalize an actionable org chart. Create custom HR tools that streamline onboarding, management, and employee engagement.</p>
+                <div class="h-40 bg-gray-700 rounded-lg mb-4 flex items-center justify-center">
+                    <svg class="w-16 h-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                </div>
+                <a href="#contact" class="inline-block mt-2 bg-green-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition">
+                    Get Started for Free
+                </a>
+            </div>
+            
+            <!-- Finance Use Case -->
+            <div class="p-6 rounded-xl bg-gray-800 shadow-lg">
+                <h3 class="text-2xl font-bold mb-3">Finance</h3>
+                <p class="text-gray-400 mb-4">Simplify contractor management. Build custom financial tools for budgeting, expense tracking, and compliance reporting.</p>
+                <div class="h-40 bg-gray-700 rounded-lg mb-4 flex items-center justify-center">
+                    <svg class="w-16 h-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <a href="#contact" class="inline-block mt-2 bg-green-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition">
+                    Get Started for Free
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section id="values" class="py-16 md:py-20 text-center bg-black px-4">
+        <h2 class="text-3xl md:text-4xl font-bold">Core Values</h2>
+        <div class="max-w-4xl mx-auto mt-10 grid md:grid-cols-3 gap-8">
+            <div class="p-6 rounded-xl bg-gray-800 shadow-lg">
+                <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-green-500">
+                    <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2">One Team</h3>
+                <p class="text-gray-400">Customers are family. We're in this together, working toward shared success.</p>
+            </div>
+            <div class="p-6 rounded-xl bg-gray-800 shadow-lg">
+                <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-green-500">
+                    <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Vision</h3>
+                <p class="text-gray-400">Every release is the most innovative. We're constantly pushing the boundaries.</p>
+            </div>
+            <div class="p-6 rounded-xl bg-gray-800 shadow-lg">
+                <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-green-500">
+                    <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Velocity</h3>
+                <p class="text-gray-400">Build, Measure, Iterate. We move fast and continuously improve.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Sign Up Section -->
+    <section id="contact" class="py-16 md:py-20 bg-gray-900 text-center px-4">
+        <h2 class="text-3xl md:text-4xl font-bold">Sign Up for Early Access</h2>
+        <p class="mt-4 text-gray-400 max-w-2xl mx-auto">The trial is coming soon—sign up to be the first to know!</p>
+        <form id="signup-form" class="mt-8 max-w-md mx-auto">
+            <div class="flex flex-col md:flex-row gap-4">
+                <input type="email" id="email" placeholder="Enter your email" required class="px-6 py-3 border border-gray-600 rounded-full bg-gray-800 text-white w-full text-lg">
+                <button type="submit" class="bg-green-500 text-black px-8 py-3 rounded-full font-semibold text-lg hover:bg-green-600 transition">
+                    Sign Up
+                </button>
+            </div>
+            <div id="form-message" class="mt-4 text-sm"></div>
         </form>
+        
+        <!-- Chat Support -->
+        <div class="mt-16 max-w-md mx-auto p-6 rounded-xl bg-gray-800">
+            <h3 class="text-xl font-bold mb-4">Have Questions?</h3>
+            <p class="text-gray-400 mb-4">Our AI assistant can help you learn more about AnySoft.</p>
+            <button id="open-chat" class="bg-green-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition">
+                Chat with Us
+            </button>
+        </div>
     </section>
 
-    <section id="values" class="py-20 text-center bg-gray-900">
-        <h3 class="text-4xl font-bold">Core Values</h3>
-        <p class="mt-6 text-lg text-gray-400">✅ One Team – Customers are family.</p>
-        <p class="text-lg text-gray-400">✅ Vision – Every release is the most innovative.</p>
-        <p class="text-lg text-gray-400">✅ Velocity – Build, Measure, Iterate.</p>
-    </section>
-
-    <footer class="py-10 bg-gray-900 text-center text-gray-400 text-lg">
-        Copyright © 2025 AnySoft: Anyone Can Build Software - All Rights Reserved.
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/lobe-chat"></script>
-
-</body>
-</html>
+    <!-- Footer -->
+    <footer class="py-12 bg-black text-center px-4">
+        <div class="max-w-5xl mx-auto grid md:grid-cols-4 gap-8 text-left">
+            <div>
+                <h3 class="text-xl font-bold mb-4">AnySoft</h3>
+                <p class="text-gray-400">Building the future of software development with AI.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="#" class="hover:text-white transition">Home</a></li>
+                    <li><a href="#why" class="hover:text-white transition">Features</a></li>
+                    <li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
+                    <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4">Legal</h3>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4">Stay Updated</h3>
+                <form id="footer-signup">
+                    <input type="email" placeholder="Your email" class="px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 w-full mb-2">
+                    <button type="submit" class="bg-green-500 text-black px-4 py-2 rounded-lg font-medium hover:bg-green-600 transition w-full">
+                        Subscribe
+                    </button>
