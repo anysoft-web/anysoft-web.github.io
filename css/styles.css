@@ -1,14 +1,13 @@
+/* Base styles from original file */
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
+    font-family: 'Inter', Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #007bff;
     color: white;
-    padding: 20px;
+    transition: all 0.3s ease;
 }
 
 nav ul {
@@ -22,19 +21,12 @@ nav ul li {
 }
 
 button {
-    background-color: #ff9900;
-    color: white;
-    padding: 10px 20px;
-    border: none;
     cursor: pointer;
-}
-
-button:hover {
-    background-color: #e68a00;
+    transition: all 0.3s ease;
 }
 
 section {
-    margin: 50px 0;
+    margin: 0;
 }
 
 table {
@@ -50,9 +42,161 @@ th, td {
 
 form input {
     padding: 10px;
-    width: 250px;
 }
 
-form button {
-    padding: 10px 20px;
+/* Additional custom styles beyond Tailwind CSS */
+
+/* Mobile menu styles */
+.mobile-menu {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .desktop-menu {
+        display: none;
+    }
+    .mobile-menu {
+        display: block;
+    }
+    
+    .pricing-card {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Smooth transitions for elements */
+.transition {
+    transition: all 0.3s ease;
+}
+
+/* Custom animation for the hero section */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#hero h1 {
+    animation: fadeInUp 1s ease-out;
+}
+
+#hero p {
+    animation: fadeInUp 1s ease-out 0.3s;
+    animation-fill-mode: both;
+}
+
+#hero a {
+    animation: fadeInUp 1s ease-out 0.6s;
+    animation-fill-mode: both;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #10b981;
+}
+
+/* Chat widget custom styles */
+#chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chat-messages::-webkit-scrollbar-thumb {
+    background: #4b5563;
+}
+
+/* Pricing cards hover effect */
+.pricing-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Mobile menu animation */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#mobile-menu-dropdown {
+    animation: slideDown 0.3s ease-out;
+}
+
+/* Custom styling for input focus states */
+input:focus, 
+textarea:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+/* Fix for sticky header */
+body {
+    padding-top: 80px;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+}
+
+/* Chat message styles */
+.chat-message {
+    margin-bottom: 1rem;
+}
+
+.chat-message.user {
+    text-align: right;
+}
+
+.typing-indicator p {
+    animation: typing 1.5s infinite;
+}
+
+@keyframes typing {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    #hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .pricing-card {
+        padding: 1.5rem;
+    }
+    
+    #contact form {
+        flex-direction: column;
+    }
 }
