@@ -3,28 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnySoft - Build Software with AI</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/anysoft-logo.png">
-    <link rel="apple-touch-icon" href="images/anysoft-logo.png">
-    
-    <!-- Meta tags -->
-    <meta name="description" content="AnySoft - AI software development platform that empowers anyone to build software without coding experience.">
-    <meta name="keywords" content="AI, software development, no-code, low-code, application building">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="AnySoft - Build Software with AI">
-    <meta property="og:description" content="Software development is no longer limited to a select few. With AI, anyone can build software.">
-    <meta property="og:image" content="https://anysoft.app/images/anysoft-logo.png">
-    <meta property="og:url" content="https://anysoft.app">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/styles.css">
+    <title>AnySoft - Build Anything with AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Scripts -->
-    <script defer src="js/script.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Custom styles to supplement TailwindCSS */
+        .mobile-menu {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .desktop-menu {
+                display: none;
+            }
+            .mobile-menu {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body class="bg-black text-white font-sans">
     <!-- Header Navigation -->
@@ -71,7 +66,7 @@
 
     <!-- Hero Section -->
     <section id="hero" class="flex flex-col items-center justify-center min-h-screen text-center bg-gradient-to-br from-gray-900 to-black text-white px-4 pt-20 pb-10">
-        <h1 class="text-4xl md:text-6xl font-extrabold">Anyone Can Build Software</h1>
+        <h1 class="text-4xl md:text-6xl font-extrabold">Anyone Can Build Anything</h1>
         <p class="mt-6 text-lg md:text-xl text-gray-300 max-w-2xl">Software development is no longer limited to a select few. With AI, you can create and deploy powerful applications effortlessly.</p>
         <a href="#contact" class="mt-8 bg-green-500 text-black px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold text-lg hover:bg-green-600 transition">
             Get Started for Free
@@ -98,7 +93,7 @@
                     </svg>
                 </div>
                 <h3 class="text-xl font-bold mb-2">Secure & Automatic</h3>
-                <p class="text-gray-400">AI builds, tests, and deploys bug-free applications in just a few clicks.</p>
+                <p class="text-gray-400">AI builds, tests, and runs your bug-free applications in just a few clicks.</p>
             </div>
             <div class="p-6 rounded-xl bg-gray-800 shadow-lg">
                 <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-green-500">
@@ -135,7 +130,7 @@
             </div>
             
             <!-- Professional Plan -->
-            <div class="p-6 md:p-8 rounded-xl bg-gray-700 shadow-lg border border-green-500 flex flex-col h-full relative">
+            <div class="p-6 md:p-8 rounded-xl bg-gray-700 shadow-lg border border-green-500 flex flex-col h-full">
                 <div class="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4">
                     <span class="bg-green-500 text-black text-xs px-2 py-1 rounded-full font-bold">POPULAR</span>
                 </div>
@@ -339,8 +334,8 @@
             <div>
                 <h3 class="text-lg font-bold mb-4">Legal</h3>
                 <ul class="space-y-2 text-gray-400">
-                    <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
-                    <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html" class="hover:text-white transition">Terms of Service</a></li>
+                    <li><a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a></li>
                 </ul>
             </div>
             <div>
@@ -350,3 +345,212 @@
                     <button type="submit" class="bg-green-500 text-black px-4 py-2 rounded-lg font-medium hover:bg-green-600 transition w-full">
                         Subscribe
                     </button>
+                </form>
+            </div>
+        </div>
+        <div class="mt-8 text-gray-500 text-sm">
+            &copy; 2025 AnySoft. All rights reserved.
+        </div>
+    </footer>
+                </form>
+            </div>
+        </div>
+        <div class="mt-12 text-gray-500 text-sm">
+            &copy; 2025 AnySoft. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Chat widget container -->
+    <div id="chat-widget" class="fixed bottom-4 right-4 z-50 hidden">
+        <div class="bg-gray-800 rounded-lg shadow-lg w-80 md:w-96 overflow-hidden">
+            <div class="bg-green-500 px-4 py-3 flex justify-between items-center">
+                <h3 class="font-bold text-black">AnySoft Assistant</h3>
+                <button id="close-chat" class="text-black hover:text-gray-800">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="chat-messages" class="h-80 overflow-y-auto p-4 bg-gray-900">
+                <div class="chat-message assistant mb-4">
+                    <div class="bg-gray-800 rounded-lg p-3 max-w-xs">
+                        <p>Hi there! I'm your AnySoft assistant. How can I help you today?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 border-t border-gray-700">
+                <form id="chat-form" class="flex gap-2">
+                    <input type="text" id="chat-input" placeholder="Type your message..." class="flex-1 px-4 py-2 rounded-lg bg-gray-800 border border-gray-700">
+                    <button type="submit" class="bg-green-500 text-black p-2 rounded-lg">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script for handling interactions -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenuDropdown = document.getElementById('mobile-menu-dropdown');
+            
+            if (mobileMenuButton && mobileMenuDropdown) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenuDropdown.classList.toggle('hidden');
+                });
+            }
+            
+            // Handle all navigation links to close mobile menu when clicked
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (mobileMenuDropdown) {
+                        mobileMenuDropdown.classList.add('hidden');
+                    }
+                });
+            });
+            
+            // Form submission handling
+            const signupForm = document.getElementById('signup-form');
+            const formMessage = document.getElementById('form-message');
+            
+            if (signupForm) {
+                signupForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = document.getElementById('email').value;
+                    
+                    // In a real implementation, you would send this to your backend
+                    console.log('Email submitted:', email);
+                    
+                    // Display success message
+                    if (formMessage) {
+                        formMessage.textContent = 'Thanks for signing up! We\'ll notify you when early access is available.';
+                        formMessage.className = 'mt-4 text-green-500 text-sm';
+                    }
+                    
+                    // Reset the form
+                    signupForm.reset();
+                });
+            }
+            
+            // Footer signup form
+            const footerSignup = document.getElementById('footer-signup');
+            if (footerSignup) {
+                footerSignup.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thanks for subscribing to our updates!');
+                    footerSignup.reset();
+                });
+            }
+            
+            // Chat widget functionality
+            const openChatButton = document.getElementById('open-chat');
+            const chatWidget = document.getElementById('chat-widget');
+            const closeChatButton = document.getElementById('close-chat');
+            const chatForm = document.getElementById('chat-form');
+            const chatInput = document.getElementById('chat-input');
+            const chatMessages = document.getElementById('chat-messages');
+            
+            if (openChatButton && chatWidget && closeChatButton) {
+                openChatButton.addEventListener('click', function() {
+                    chatWidget.classList.remove('hidden');
+                });
+                
+                closeChatButton.addEventListener('click', function() {
+                    chatWidget.classList.add('hidden');
+                });
+                
+                if (chatForm && chatInput && chatMessages) {
+                    chatForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        
+                        const message = chatInput.value.trim();
+                        if (!message) return;
+                        
+                        // Add user message to chat
+                        addMessage('user', message);
+                        
+                        // Clear input
+                        chatInput.value = '';
+                        
+                        // Simulate AI response with predefined responses
+                        setTimeout(() => {
+                            const responses = [
+                                "AnySoft lets you create software without coding experience. You can get started for free!",
+                                "Our Professional plan at $50/month includes custom branding and 2 hours of AI usage per day.",
+                                "Yes, you can deploy your applications to any platform with our paid plans.",
+                                "The free starter plan includes 30 minutes of AI usage per day and 50 GB of bandwidth.",
+                                "You can add extra AI usage time with our Add-On Credits for $20/month per block.",
+                                "Sign up with your email and we'll notify you as soon as early access is available!",
+                                "AnySoft is designed for entrepreneurs, product managers, IT professionals, and more."
+                            ];
+                            
+                            const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                            addMessage('assistant', randomResponse);
+                            
+                            // Scroll to bottom
+                            chatMessages.scrollTop = chatMessages.scrollHeight;
+                        }, 1000);
+                    });
+                }
+            }
+            
+            function addMessage(sender, text) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `chat-message ${sender} mb-4`;
+                
+                const bubbleDiv = document.createElement('div');
+                bubbleDiv.className = sender === 'user' 
+                    ? 'bg-green-500 text-black rounded-lg p-3 max-w-xs ml-auto' 
+                    : 'bg-gray-800 rounded-lg p-3 max-w-xs';
+                
+                const messagePara = document.createElement('p');
+                messagePara.textContent = text;
+                
+                bubbleDiv.appendChild(messagePara);
+                messageDiv.appendChild(bubbleDiv);
+                chatMessages.appendChild(messageDiv);
+            }
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80, // Adjust for header height
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Header scroll behavior
+            const header = document.querySelector('header');
+            let lastScrollTop = 0;
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > 100) {
+                    header.classList.add('py-3', 'shadow-xl');
+                    header.classList.remove('py-6');
+                } else {
+                    header.classList.add('py-6');
+                    header.classList.remove('py-3', 'shadow-xl');
+                }
+                
+                lastScrollTop = scrollTop;
+            });
+        });
+    </script>
+</body>
+</html>
