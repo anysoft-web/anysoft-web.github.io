@@ -1,18 +1,17 @@
 /**
- * AnySoft Live Chat Widget
- * Handles chat functionality with strict message control
+ * AnySoft Lead Capture Chat Widget
+ * Updated to send emails to Formspree
  */
 
-// Global state to track if the user has sent a message
-let userHasSentMessage = false;
-let welcomeMessageSent = false;
+// Global state to prevent duplicate messages
+let initialMessageSent = false;
 
 document.addEventListener('DOMContentLoaded', function() {
     initChatWidget();
 });
 
 /**
- * Initialize the chat widget with improved functionality
+ * Initialize the chat widget
  */
 function initChatWidget() {
     // Create chat widget HTML if it doesn't exist
@@ -29,4 +28,184 @@ function initChatWidget() {
     
     if (openChatButton && chatWidget && closeChatButton) {
         // Open chat when button is clicked
-        openChatButton.a
+        openChatButton.addEventListener('click', function() {
+            chatWidget.classList.remove('hidden');
+            if (chatInput) chatInput.focus();
+            
+            // Send initial lead capture message only once
+            if (!initialMessageSent && chatMessages.children.length === 0) {
+                setTimeout(() => {
+                    addMessage('assistant', "Thanks for your interest in AnySoft! Please share your email so we can follow up with you.");
+                    initialMessageSent = true;
+                }, 500);
+            }
+        });
+        
+        // Close chat when close button is clicked
+        closeChatButton.addEventListener('click', function() {
+            chatWidget.classList.add('hidden');
+        });
+        
+        // Handle form submission for chat messages
+        if (chatForm && chatInput && chatMessages) {
+            chatForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const message = chatInput.value.trim();
+                if (!message) return;
+                
+                // Add user message to chat
+                addMessage('user', message);
+                
+                // Clear input
+                chatInput.value = '';
+                
+                // Check if message looks like an email
+                if (isEmailLike(message)) {
+                    processEmailSubmission(message);
+                } else {
+                    // For non-email messages, prompt for email
+                    setTimeout(() => {
+                        addMessage('assistant', "To best assist you, we'd like to follow up directly. Could you please provide your email address?");
+                    }, 500);
+                }
+                
+                // Scroll to bottom
+                scrollChatToBottom();
+            });
+        }
+    }
+}
+
+/**
+ * Check if a string looks like an email address
+ */
+function isEmailLike(text) {
+    return text.includes('@') && text.includes('.');
+}
+
+/**
+ * Process what appears to be an email submission
+ */
+function processEmailSubmission(email) {
+    // Send email to Formspree
+    fetch('https://formspree.io/f/xpwqvggj', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: email,
+            source: 'chat-widget',
+            page: window.location.href,
+            timestamp: new Date().toISOString()
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            // Thank the user for submitting their email
+            addMessage('assistant', "Thank you for your email! We've added you to our list and will be in touch soon about getting started with AnySoft.");
+        } else {
+            throw new Error('Network response was not ok');
+        }
+    })
+    .catch(error => {
+        console.error('Error submitting form:', error);
+        
+        // Show error message if submission fails
+        addMessage('assistant', "Thanks for your email! We've had a small technical issue, but we'll make sure to follow up with you soon.");
+        
+        // Fall back to localStorage as backup
+        try {
+            let leads = JSON.parse(localStorage.getItem('anysoftLeads')) || [];
+            leads.push({
+                email: email,
+                timestamp: new Date().toISOString(),
+                source: 'chat-widget-fallback'
+            });
+            localStorage.setItem('anysoftLeads', JSON.stringify(leads));
+        } catch (e) {
+            console.error('Fallback storage failed:', e);
+        }
+    });
+}
+
+/**
+ * Create the chat widget HTML and add it to the page
+ */
+function createChatWidgetHTML() {
+    const chatWidgetHTML = `
+    <div id="chat-widget" class="fixed bottom-4 right-4 z-50 hidden">
+        <div class="bg-gray-800 rounded-lg shadow-lg w-80 md:w-96 overflow-hidden">
+            <div class="bg-green-500 px-4 py-3 flex justify-between items-center">
+                <h3 class="font-bold text-black">AnySoft Assistant</h3>
+                <button id="close-chat" class="text-black hover:text-gray-800">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="chat-messages" class="h-80 overflow-y-auto p-4 bg-gray-900">
+                <!-- Chat messages will be added here dynamically -->
+            </div>
+            <div class="p-4 border-t border-gray-700">
+                <form id="chat-form" class="flex gap-2">
+                    <input type="text" id="chat-input" placeholder="Enter your email or message..." class="flex-1 px-4 py-2 rounded-lg bg-gray-800 border border-gray-700">
+                    <button type="submit" class="bg-green-500 text-black p-2 rounded-lg">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    `;
+    
+    // Append the chat widget to the body
+    const chatWidgetContainer = document.createElement('div');
+    chatWidgetContainer.innerHTML = chatWidgetHTML;
+    document.body.appendChild(chatWidgetContainer.firstElementChild);
+}
+
+/**
+ * Add a message to the chat
+ */
+function addMessage(sender, text) {
+    const chatMessages = document.getElementById('chat-messages');
+    if (!chatMessages) return;
+    
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `chat-message ${sender} mb-4`;
+    
+    const bubbleDiv = document.createElement('div');
+    bubbleDiv.className = sender === 'user' 
+        ? 'bg-green-500 text-black rounded-lg p-3 max-w-xs ml-auto' 
+        : 'bg-gray-800 rounded-lg p-3 max-w-xs';
+    
+    bubbleDiv.textContent = text;
+    messageDiv.appendChild(bubbleDiv);
+    chatMessages.appendChild(messageDiv);
+    
+    scrollChatToBottom();
+}
+
+/**
+ * Scroll chat to bottom
+ */
+function scrollChatToBottom() {
+    const chatMessages = document.getElementById('chat-messages');
+    if (chatMessages) {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+}
+
+// Clear any existing state when the page loads
+window.addEventListener('load', function() {
+    initialMessageSent = false;
+});
+
+// Initialize if the document is already loaded
+if (document.readyState === 'complete') {
+    initChatWidget();
+}
